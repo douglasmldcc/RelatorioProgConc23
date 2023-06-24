@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     FILE *fileD = fopen(arqDesc, "w"); // Abre arquivo em modo de escrita 
 
     if (file == NULL) {
-        printf("Error opening the file.\n");
+        printf("Erro ao abrir o arquivo.\n");
         return 1;
     }
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     fclose(file); // Fecha o arquivo
     fclose(fileD); // Fecha o arquivo
 
-    printf("Data written to file successfully.\n");
+    printf("OS dados foram gravados no arquivo.\n");
 
     return 0;
 }
