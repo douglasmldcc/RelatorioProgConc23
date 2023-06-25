@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <string.h>
+
 
 #define TAMANHO 100000
 
@@ -138,13 +140,29 @@ int main(int argc, char *argv[]) {
         printf("Digite: %s <Nome do Arquivo>\n",argv[0]);
         return 1;
     }
-
+    
+    // inicializamos os arrays 
     int arr[TAMANHO];
     int arry[TAMANHO];
+    int arrz[TAMANHO];
+
+    // inicializamos as variaveis do sistema 
     int n, numThreads;
 
-    printf("Digite o tamanho do array: ");
-    scanf("%d", &n);
+    //extraimos de forma dinamica do arquivo o tamanho a ser trabalhado
+    char nomArq[10];
+    strncpy(nomArq, argv[1], sizeof(nomArq) - 1);
+    nomArq[sizeof(nomArq) - 1] = '\0';
+
+    size_t strTam = strlen(nomArq);
+    memmove(nomArq, nomArq + 5, strTam - 4);
+    nomArq[strTam - 4] = '\0';
+
+    n = atoi(nomArq);
+
+
+    printf("Tamanho do array: ");
+    printf("%d\n", n);
 
     if (n > TAMANHO || n <= 0) {
         printf("Tamanho inválido. O tamanho deve estar entre 1 e %d.\n", TAMANHO);
@@ -159,6 +177,7 @@ int main(int argc, char *argv[]) {
     while (fscanf(file, "%d;%d;%d", &x, &y, &z) == 3) {
         arr[ind]= x;
         arry[ind] = y;
+        arrz[ind] = z;
         ind++;
     }
 
@@ -174,9 +193,12 @@ int main(int argc, char *argv[]) {
 
     mergeSortConcorrente(arr, n, numThreads);
     mergeSortConcorrente(arry, n, numThreads);
+    mergeSortConcorrente(arrz, n, numThreads);
 
     printf("Array ordenado:\n");
     printArray(arr, n);
+    printArray(arry, n);
+    printArray(arrz, n);
 
     return 0;
 }
