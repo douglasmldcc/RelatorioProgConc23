@@ -2,62 +2,62 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-#define MAX_SIZE 100000
+#define TAMANHO 100000
 
 typedef struct {
     int* array;
-    int start;
-    int end;
+    int inicio;
+    int fim;
 } ThreadArgs;
 
-void merge(int arr[], int left, int mid, int right) {
+void merge(int arr[], int esq, int meio, int dirt) {
     int i, j, k;
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+    int n1 = meio - esq + 1;
+    int n2 = dirt - meio;
 
-    int leftArray[n1], rightArray[n2];
+    int esqArr[n1], dirtArr[n2];
 
     for (i = 0; i < n1; i++)
-        leftArray[i] = arr[left + i];
+        esqArr[i] = arr[esq + i];
     for (j = 0; j < n2; j++)
-        rightArray[j] = arr[mid + 1 + j];
+        dirtArr[j] = arr[meio + 1 + j];
 
     i = 0;
     j = 0;
-    k = left;
+    k = esq;
 
     while (i < n1 && j < n2) {
-        if (leftArray[i] <= rightArray[j]) {
-            arr[k] = leftArray[i];
+        if (esqArr[i] <= dirtArr[j]) {
+            arr[k] = esqArr[i];
             i++;
         } else {
-            arr[k] = rightArray[j];
+            arr[k] = dirtArr[j];
             j++;
         }
         k++;
     }
 
     while (i < n1) {
-        arr[k] = leftArray[i];
+        arr[k] = esqArr[i];
         i++;
         k++;
     }
 
     while (j < n2) {
-        arr[k] = rightArray[j];
+        arr[k] = dirtArr[j];
         j++;
         k++;
     }
 }
 
-void mergeSort(int arr[], int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
+void mergeSort(int arr[], int esq, int dirt) {
+    if (esq < dirt) {
+        int meio = esq + (dirt - esq) / 2;
 
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
+        mergeSort(arr, esq, meio);
+        mergeSort(arr, meio + 1, dirt);
 
-        merge(arr, left, mid, right);
+        merge(arr, esq, meio, dirt);
     }
 }
 
@@ -65,44 +65,45 @@ void* mergeSortThread(void* arguments) {
     ThreadArgs* args = (ThreadArgs*)arguments;
 
     int* arr = args->array;
-    int left = args->start;
-    int right = args->end;
+    int esq = args->inicio;
+    int dirt = args->fim;
 
-    if (left < right) {
-        int mid = left + (right - left) / 2;
+    if (esq < dirt) {
+        int meio = esq + (dirt - esq) / 2;
 
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
+        mergeSort(arr, esq, meio);
+        mergeSort(arr, meio + 1, dirt);
 
-        merge(arr, left, mid, right);
+        merge(arr, esq, meio, dirt);
     }
 
     pthread_exit(NULL);
 }
 
-void mergeSortConcurrent(int arr[], int n, int numThreads) {
+// Funcao que inicial de Merge Sort 
+void mergeSortConcorrente(int arr[], int n, int numThreads) {
+    // Condicional, caso o numero de thread seja um, o fluxo roda sequencialmente
     if (numThreads <= 1) {
         mergeSort(arr, 0, n - 1);
         return;
     }
-
     pthread_t threads[numThreads];
     ThreadArgs args[numThreads];
 
-    int segmentSize = n / numThreads;
-    int extraSize = n % numThreads;
+    int partTam = n / numThreads;
+    int extraTam = n % numThreads;
 
     int i;
     for (i = 0; i < numThreads; i++) {
-        int start = i * segmentSize;
-        int end = start + segmentSize - 1;
+        int inicio = i * partTam;
+        int fim = inicio + partTam - 1;
 
         if (i == numThreads - 1)
-            end += extraSize;
+            fim += extraTam;
 
         args[i].array = arr;
-        args[i].start = start;
-        args[i].end = end;
+        args[i].inicio = inicio;
+        args[i].fim = fim;
 
         pthread_create(&threads[i], NULL, mergeSortThread, (void*)&args[i]);
     }
@@ -111,19 +112,20 @@ void mergeSortConcurrent(int arr[], int n, int numThreads) {
         pthread_join(threads[i], NULL);
     }
 
-    int step = segmentSize;
-    while (step < n) {
-        for (i = 0; i < n; i += 2 * step) {
-            int left = i;
-            int mid = i + step - 1;
-            int right = (i + 2 * step - 1 < n) ? i + 2 * step - 1 : n - 1;
+    int passo = partTam;
+    while (passo < n) {
+        for (i = 0; i < n; i += 2 * passo) {
+            int esq = i;
+            int meio = i + passo - 1;
+            int dirt = (i + 2 * passo - 1 < n) ? i + 2 * passo - 1 : n - 1;
 
-            merge(arr, left, mid, right);
+            merge(arr, esq, meio, dirt);
         }
-        step *= 2;
+        passo *= 2;
     }
 }
 
+// Funcao que mostra o array, usado 
 void printArray(int arr[], int size) {
     for (int i = 0; i < size; i++) {
         printf("%d ", arr[i]);
@@ -131,27 +133,47 @@ void printArray(int arr[], int size) {
     printf("\n");
 }
 
-int main() {
-    int arr[MAX_SIZE];
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        printf("Digite: %s <Nome do Arquivo>\n",argv[0]);
+        return 1;
+    }
+
+    int arr[TAMANHO];
+    int arry[TAMANHO];
     int n, numThreads;
 
     printf("Digite o tamanho do array: ");
     scanf("%d", &n);
 
-    if (n > MAX_SIZE || n <= 0) {
-        printf("Tamanho inválido. O tamanho deve estar entre 1 e %d.\n", MAX_SIZE);
+    if (n > TAMANHO || n <= 0) {
+        printf("Tamanho inválido. O tamanho deve estar entre 1 e %d.\n", TAMANHO);
         return 1;
     }
 
-    printf("Digite os elementos do array:\n");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+    // Copiamos as posicoes para um array
+    int ind=0;
+
+    FILE *file = fopen(argv[1], "r"); //Abre arquivo em modo de leitura 
+    int x, y, z;
+    while (fscanf(file, "%d;%d;%d", &x, &y, &z) == 3) {
+        arr[ind]= x;
+        arry[ind] = y;
+        ind++;
     }
 
+    
     printf("Digite o número de threads: ");
     scanf("%d", &numThreads);
 
-    mergeSortConcurrent(arr, n, numThreads);
+    if (numThreads <= 1) {
+        printf("Merge Sort Sequencial\n");
+    } else  {
+        printf("Merge Sort Concorrente\n");
+    }
+
+    mergeSortConcorrente(arr, n, numThreads);
+    mergeSortConcorrente(arry, n, numThreads);
 
     printf("Array ordenado:\n");
     printArray(arr, n);
