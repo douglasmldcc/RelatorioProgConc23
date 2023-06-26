@@ -1,6 +1,3 @@
-Aqui está o código modificado, com a inclusão do mutex para evitar a seção crítica:
-
-```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
