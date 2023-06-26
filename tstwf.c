@@ -8,13 +8,15 @@ double dist(double X, double Y){
     return valor;
 }
 int Passo(int valor){
-    srand(time(NULL));
+    
     int NumRand = rand();
     int resultado = (pow(-1,NumRand)) + valor;
-    return valor;
+    return resultado;
 }
 
 int main(int argc, char *argv[]) {
+
+    srand(time(NULL));
 
     char arqCresc[100];
     char arqDesc[100];
@@ -49,13 +51,14 @@ int main(int argc, char *argv[]) {
         pos2 = Passo(pos2);
         fprintf(fileD, "%d;%d;%.0f\n", (size-1)-i, (size-1)-i, dist((size-1)-i,(size-1)-i)); //Descrescente
         fprintf(file, "%d;%d;%.0f\n", i, i, dist(i,i)); //Crescente
+        fprintf(fileN, "%d;%d;%.0f\n", pos1, pos2, dist(pos1,pos2)); //Crescente
     } 
 
     fclose(file); // Fecha o arquivo
     fclose(fileD); // Fecha o arquivo
     fclose(fileN); // Fecha o arquivo
 
-    printf("Data written to file successfully.\n");
+    printf("Arquivos escritos com sucesso.\n");
 
     return 0;
 }
