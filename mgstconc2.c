@@ -4,7 +4,7 @@
 #include <string.h>
 
 
-#define TAMANHO 100000
+#define TAMANHO 400000
 
 typedef struct {
     int* array;
@@ -135,31 +135,37 @@ void printArray(int arr[], int size) {
     printf("\n");
 }
 
+void printArrayExtr(int arr[], int size) {
+        printf("Menor valor: %d ; Maior valor : %d \n", arr[0], arr[size-1]);
+}
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         printf("Digite: %s <Nome do Arquivo>\n",argv[0]);
         return 1;
     }
-    
-    // inicializamos os arrays 
-    int arr[TAMANHO];
-    int arry[TAMANHO];
-    int arrz[TAMANHO];
+
+    //Iniciamos os vetores a trabalhar 
+    int *arr = (int*)malloc(TAMANHO * sizeof(int));
+    int *arry = (int*)malloc(TAMANHO * sizeof(int));
+    int *arrz = (int*)malloc(TAMANHO * sizeof(int));
+
+    // Verifica a alocação de memória 
+    if (arr == NULL || arry == NULL || arrz == NULL) {
+    printf("Falha na alocação de memória.\n");
+    return 1;
+    }
 
     // inicializamos as variaveis do sistema 
     int n, numThreads;
 
     //extraimos de forma dinamica do arquivo o tamanho a ser trabalhado
-    char nomArq[10];
+    char nomArq[100];
     strncpy(nomArq, argv[1], sizeof(nomArq) - 1);
     nomArq[sizeof(nomArq) - 1] = '\0';
-
     size_t strTam = strlen(nomArq);
     memmove(nomArq, nomArq + 5, strTam - 4);
     nomArq[strTam - 4] = '\0';
-
     n = atoi(nomArq);
-
 
     printf("Tamanho do array: ");
     printf("%d\n", n);
@@ -195,10 +201,12 @@ int main(int argc, char *argv[]) {
     mergeSortConcorrente(arry, n, numThreads);
     mergeSortConcorrente(arrz, n, numThreads);
 
-    printf("Array ordenado:\n");
-    printArray(arr, n);
-    printArray(arry, n);
-    printArray(arrz, n);
+    printf("Array ordenado X:\n");
+    printArrayExtr(arr, n);
+    printf("Array ordenado Y:\n");
+    printArrayExtr(arry, n);
+    printf("Array ordenado Z:\n");
+    printArrayExtr(arrz, n);
 
     return 0;
 }
