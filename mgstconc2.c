@@ -3,7 +3,6 @@
 #include <pthread.h>
 #include <string.h>
 
-
 #define TAMANHO 400000
 
 typedef struct {
@@ -66,9 +65,9 @@ void mergeSort(int arr[], int esq, int dirt) {
 void* mergeSortThread(void* arguments) {
     ThreadArgs* args = (ThreadArgs*)arguments;
 
-    int* arr = args->array;
-    int esq = args->inicio;
-    int dirt = args->fim;
+    int* arr = args-> array;
+    int esq = args-> inicio;
+    int dirt = args-> fim;
 
     if (esq < dirt) {
         int meio = esq + (dirt - esq) / 2;
@@ -82,7 +81,7 @@ void* mergeSortThread(void* arguments) {
     pthread_exit(NULL);
 }
 
-// Funcao que inicial de Merge Sort 
+// Função que inicia o Merge Sort 
 void mergeSortConcorrente(int arr[], int n, int numThreads) {
     // Condicional, caso o numero de thread seja um, o fluxo roda sequencialmente
     if (numThreads <= 1) {
@@ -127,7 +126,7 @@ void mergeSortConcorrente(int arr[], int n, int numThreads) {
     }
 }
 
-// Funcao que mostra o array, usado 
+// Função que printa o array, usado 
 void printArray(int arr[], int size) {
     for (int i = 0; i < size; i++) {
         printf("%d ", arr[i]);
@@ -144,21 +143,21 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    //Iniciamos os vetores a trabalhar 
+    // Iniciando os vetores
     int *arr = (int*)malloc(TAMANHO * sizeof(int));
     int *arry = (int*)malloc(TAMANHO * sizeof(int));
     int *arrz = (int*)malloc(TAMANHO * sizeof(int));
 
-    // Verifica a alocação de memória 
+    // Verificando a alocação de memória 
     if (arr == NULL || arry == NULL || arrz == NULL) {
     printf("Falha na alocação de memória.\n");
     return 1;
     }
 
-    // inicializamos as variaveis do sistema 
+    // Inicializando as variáveis do sistema 
     int n, numThreads;
 
-    //extraimos de forma dinamica do arquivo o tamanho a ser trabalhado
+    // Extraindo de forma dinamica do arquivo o tamanho a ser trabalhado
     char nomArq[100];
     strncpy(nomArq, argv[1], sizeof(nomArq) - 1);
     nomArq[sizeof(nomArq) - 1] = '\0';
@@ -175,7 +174,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Copiamos as posicoes para um array
+    // Copiando as posições para um array
     int ind=0;
 
     FILE *file = fopen(argv[1], "r"); //Abre arquivo em modo de leitura 
@@ -187,7 +186,6 @@ int main(int argc, char *argv[]) {
         ind++;
     }
 
-    
     printf("Digite o número de threads: ");
     scanf("%d", &numThreads);
 
@@ -201,11 +199,11 @@ int main(int argc, char *argv[]) {
     mergeSortConcorrente(arry, n, numThreads);
     mergeSortConcorrente(arrz, n, numThreads);
 
-    printf("Array ordenado X:\n");
+    printf("Array Ordenado X:\n");
     printArrayExtr(arr, n);
-    printf("Array ordenado Y:\n");
+    printf("Array Ordenado Y:\n");
     printArrayExtr(arry, n);
-    printf("Array ordenado Z:\n");
+    printf("Array Ordenado Z:\n");
     printArrayExtr(arrz, n);
 
     return 0;
