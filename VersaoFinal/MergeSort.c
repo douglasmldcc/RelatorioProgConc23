@@ -215,6 +215,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     printf("Tamanho do array: %d\n", n);
+    printf("Numero de threads: %d\n", numThreads);
 
     // Copiamos as posicoes para os arrays
     int ind=0;
