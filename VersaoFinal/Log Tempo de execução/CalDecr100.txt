@@ -1,0 +1,288 @@
+Script started on 2023-06-27 18:11:44-03:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="110" LINES="30"]
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./Mers[KgeSort desc_100.txt 2
+[?2004lTamanho do array: 100
+Numero de threads: 2
+Tempo de inicializacao : 0.010817 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 2
+[?2004lTamanho do array: 100
+Numero de threads: 2
+Tempo de inicializacao : 0.002104 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 2
+[?2004lTamanho do array: 100
+Numero de threads: 2
+Tempo de inicializacao : 0.001969 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 2
+[?2004lTamanho do array: 100
+Numero de threads: 2
+Tempo de inicializacao : 0.002080 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 2
+[?2004lTamanho do array: 100
+Numero de threads: 2
+Tempo de inicializacao : 0.002014 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: segundos
+---------------------------------------------------------------
+Numero de threads: 4
+Tempo de inicializacao : 0.001623 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000014 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 4
+[?2004lTamanho do array: 100
+Numero de threads: 4
+Tempo de inicializacao : 0.002016 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000022 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 4
+[?2004lTamanho do array: 100
+Numero de threads: 4
+Tempo de inicializacao : 0.001640 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000013 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 4
+[?2004lTamanho do array: 100
+Numero de threads: 4
+Tempo de inicializacao : 0.001542 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000012 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 4
+[?2004lTamanho do array: 100
+Numero de threads: 4
+Tempo de inicializacao : 0.001523 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000012 segundos
+-------------------------------------------------------------------Tamanho do array: 100
+Numero de threads: 6
+Tempo de inicializacao : 0.002126 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000012 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 6
+[?2004lTamanho do array: 100
+Numero de threads: 6
+Tempo de inicializacao : 0.001691 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000011 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 6
+[?2004lTamanho do array: 100
+Numero de threads: 6
+Tempo de inicializacao : 0.001419 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000012 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 6
+[?2004lTamanho do array: 100
+Numero de threads: 6
+Tempo de inicializacao : 0.002128 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000019 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ ./MergeSort desc_100.txt 6
+[?2004lTamanho do array: 100
+Numero de threads: 6
+Tempo de inicializacao : 0.001504 segundos
+Executando merge sort...
+
+ Merge sort concorrente 
+Arrays ordenados:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução Concorrente: segundos
+
+ Merge sort sequencial
+Array ordenado:
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 99
+Menor valor: 0 ; Maior valor: 198
+Tempo de execução: 0.000011 segundos
+[?2004h]0;loc17@LOC17: /mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[01;32mloc17@LOC17[00m:[01;34m/mnt/c/Users/LOC 17/Meus Documentos/GitHub/RelatorioProgConc23/VersaoFinal[00m$ script[K[K[K[K[K[Kei[Kxit
+[?2004lexit
+
+Script done on 2023-06-27 18:12:28-03:00 [COMMAND_EXIT_CODE="0"]
