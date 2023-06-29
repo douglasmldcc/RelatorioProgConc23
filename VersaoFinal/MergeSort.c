@@ -7,11 +7,12 @@
 #define TAMANHO 400000
 
 typedef struct {
-    int* array;
-    int inicio;
-    int fim;
+    int* array;     // identificador do array que está sendo trabalhado
+    int inicio;     // início da parte do array a ser trabalhada 
+    int fim;        // fim da parte do array a ser trabalhada 
 } tArgs;
 
+// Funções padrão de Merge Sort 
 void merge(int arr[], int esq, int meio, int dirt) {
     int i, j, k;
     int n1 = meio - esq + 1;
@@ -55,7 +56,7 @@ void merge(int arr[], int esq, int meio, int dirt) {
     free(esqArr);
     free(dirtArr);
 }
-
+// Funções padrão de Merge Sort 
 void mergeSort(int arr[], int esq, int dirt) {
     if (esq < dirt) {
         int meio = esq + (dirt - esq) / 2;
@@ -67,7 +68,10 @@ void mergeSort(int arr[], int esq, int dirt) {
     }
 }
 
+// Divisão de tarefas de threads
 void* mergeSortThread(void* arguments) {
+
+    //Cada thread recebe os parametros do array, seu inicio e seu fim
     tArgs* args = (tArgs*)arguments;
 
     int* arr = args->array;
@@ -79,7 +83,9 @@ void* mergeSortThread(void* arguments) {
     pthread_exit(NULL);
 }
 
+//Função merge para contornar o problema de violação de memoria 
 void mergeArrays(int arr[], int inicio, int meio, int fim) {
+    
     int i, j, k;
     int n1 = meio - inicio + 1;
     int n2 = fim - meio;
@@ -123,11 +129,13 @@ void mergeArrays(int arr[], int inicio, int meio, int fim) {
     free(temp2);
 }
 
+// Função que inicial de Merge Sort Concorrente 
 void mergeSortConcorrente(int arr[], int n, int numThreads) {
 
     pthread_t threads[numThreads];
     tArgs args[numThreads];
 
+    // O Array deve ser dividido igualmente entre as threads
     int partTam = n / numThreads;
     int extraTam = n % numThreads;
 
@@ -143,13 +151,16 @@ void mergeSortConcorrente(int arr[], int n, int numThreads) {
         args[i].inicio = inicio;
         args[i].fim = fim;
 
+        // Cria as threads de MergeSort concorrente 
         pthread_create(&threads[i], NULL, mergeSortThread, (void*)&args[i]);
     }
 
+    // Aguarda o término de cada thread 
     for (i = 0; i < numThreads; i++) {
         pthread_join(threads[i], NULL);
     }
-
+    
+    // Executa um merge dos arrays ordenados de cada thread
     int passo = partTam;
     while (passo < n) {
         for (i = 0; i < n; i += 2 * passo) {
@@ -163,10 +174,12 @@ void mergeSortConcorrente(int arr[], int n, int numThreads) {
     }
 }
 
+// Função que mostra o primeiro e o último elemento do array
 void printArrayExtr(int arr[], int size) {
     printf("Menor valor: %d ; Maior valor: %d\n", arr[0], arr[size - 1]);
 }
 
+//Fluxo principal
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         printf("Digite: %s <Nome do Arquivo>\n", argv[0]);
@@ -187,6 +200,7 @@ int main(int argc, char* argv[]) {
 
     numThreads = atoi(argv[2]); // Numeros threads 
 
+    //extraimos de forma dinamica do arquivo o tamanho a ser trabalhado
     char nomArq[100];
     strncpy(nomArq, argv[1], sizeof(nomArq) - 1);
     nomArq[sizeof(nomArq) - 1] = '\0';
@@ -223,9 +237,11 @@ int main(int argc, char* argv[]) {
     FILE *file = fopen(argv[1], "r"); //Abre arquivo em modo de leitura 
     int x, y, z;
     while (fscanf(file, "%d;%d;%d", &x, &y, &z) == 3) {
+        //Array Sequencial
         arrx[ind]= x;
         arry[ind] = y;
         arrz[ind] = z;
+        //Array Concorrente 
         arrxConc[ind]= x;
         arryConc[ind] = y;
         arrzConc[ind] = z;
@@ -248,9 +264,13 @@ int main(int argc, char* argv[]) {
         GET_TIME(tcfim);
         tcdelta = tcfim - tcinicio;
 
+        // Amostra os dados 
         printf("Arrays ordenados:\n");
+        printf("Eixo X:\n");
         printArrayExtr(arrxConc, n);
+        printf("Eixo Y:\n");
         printArrayExtr(arryConc, n);
+        printf("Distancia da origem:\n");
         printArrayExtr(arrzConc, n);
 
         printf("Tempo de execução Concorrente: %lf segundos\n", tcdelta);
@@ -266,9 +286,13 @@ int main(int argc, char* argv[]) {
     GET_TIME(tfim);
     tdelta = tfim - tinicio;
 
+    // Amostra os dados 
     printf("Array ordenado:\n");
+    printf("Eixo X:\n");
     printArrayExtr(arrx, n);
+    printf("Eixo Y:\n");
     printArrayExtr(arry, n);
+    printf("Distancia da origem:\n");
     printArrayExtr(arrz, n);
     
     printf("Tempo de execução: %lf segundos\n", tdelta);
