@@ -59,6 +59,7 @@ void merge(int arr[], int esq, int meio, int dirt) {
     free(esqArr);
     free(dirtArr);
 }
+
 // Funções padrão de Merge Sort 
 void mergeSort(int arr[], int esq, int dirt) {
     if (esq < dirt) {
@@ -183,6 +184,7 @@ void printArrayExtr(int arr[], int size) {
 }
 
 bool verificaOrdem(int array[], int n) {
+
     for (int i = 0; i < n - 1; i++) {
         if (array[i] > array[i + 1]) {
             return false;
