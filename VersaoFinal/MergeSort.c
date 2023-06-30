@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <pthread.h>
 #include <string.h>
+#include <stdbool.h>
+
 #include "timer.h"
+
 
 #define TAMANHO 400000
 
@@ -179,6 +182,15 @@ void printArrayExtr(int arr[], int size) {
     printf("Menor valor: %d ; Maior valor: %d\n", arr[0], arr[size - 1]);
 }
 
+bool verificaOrdem(int array[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        if (array[i] > array[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 //Fluxo principal
 int main(int argc, char* argv[]) {
     if (argc < 2) {
@@ -228,6 +240,7 @@ int main(int argc, char* argv[]) {
         printf("Tamanho inválido. O tamanho deve estar entre 1 e %d.\n", TAMANHO);
         return 1;
     }
+
     printf("Tamanho do array: %d\n", n);
     printf("Numero de threads: %d\n", numThreads);
 
@@ -264,15 +277,24 @@ int main(int argc, char* argv[]) {
         GET_TIME(tcfim);
         tcdelta = tcfim - tcinicio;
 
-        // Amostra os dados 
-        printf("Arrays ordenados:\n");
-        printf("Eixo X:\n");
-        printArrayExtr(arrxConc, n);
-        printf("Eixo Y:\n");
-        printArrayExtr(arryConc, n);
-        printf("Distancia da origem:\n");
-        printArrayExtr(arrzConc, n);
+        // Verifica ordenação dos vetores 
+        bool ordenadoXC = verificaOrdem(arrxConc, n);
+        bool ordenadoYC = verificaOrdem(arryConc, n);
+        bool ordenadoZC = verificaOrdem(arrzConc, n);
 
+        if ( ordenadoXC ||ordenadoYC || ordenadoZC ) {
+            printf("Arrays ordenados:\n");
+            // Amostra os dados 
+            printf("Eixo X:\n");
+            printArrayExtr(arrxConc, n);
+            printf("Eixo Y:\n");
+            printArrayExtr(arryConc, n);
+            printf("Distancia da origem:\n");
+            printArrayExtr(arrzConc, n);
+
+        } else {
+            printf("O array não está ordenado.\n");
+        }
         printf("Tempo de execução Concorrente: %lf segundos\n", tcdelta);
         
     }
@@ -286,15 +308,24 @@ int main(int argc, char* argv[]) {
     GET_TIME(tfim);
     tdelta = tfim - tinicio;
 
-    // Amostra os dados 
-    printf("Array ordenado:\n");
-    printf("Eixo X:\n");
-    printArrayExtr(arrx, n);
-    printf("Eixo Y:\n");
-    printArrayExtr(arry, n);
-    printf("Distancia da origem:\n");
-    printArrayExtr(arrz, n);
+    // Verifica ordenação dos vetores 
+    bool ordenadoX = verificaOrdem(arrx, n);
+    bool ordenadoY = verificaOrdem(arry, n);
+    bool ordenadoZ = verificaOrdem(arrz, n);
     
+    if ( ordenadoX ||ordenadoY ||ordenadoZ ) {
+        printf("Array ordenado:\n");
+        // Amostra os dados 
+        printf("Eixo X:\n");
+        printArrayExtr(arrx, n);
+        printf("Eixo Y:\n");
+        printArrayExtr(arry, n);
+        printf("Distancia da origem:\n");
+        printArrayExtr(arrz, n);
+    } else {
+        printf("O array não está ordenado.\n");
+    }
+
     printf("Tempo de execução: %lf segundos\n", tdelta);
 
     //Liberação da memória
