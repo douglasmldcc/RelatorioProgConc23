@@ -18,12 +18,16 @@ typedef struct {
 // Funções padrão de Merge Sort 
 void merge(int arr[], int esq, int meio, int dirt) {
     int i, j, k;
+
+    // Calcula o tamanho das partes do array
     int n1 = meio - esq + 1;
     int n2 = dirt - meio;
 
+    // Aloca memória para arrays 
     int* esqArr = (int*)malloc(n1 * sizeof(int));
     int* dirtArr = (int*)malloc(n2 * sizeof(int));
-
+    
+    // Copia as partes do array original para os arrays 
     for (i = 0; i < n1; i++)
         esqArr[i] = arr[esq + i];
     for (j = 0; j < n2; j++)
@@ -33,6 +37,7 @@ void merge(int arr[], int esq, int meio, int dirt) {
     j = 0;
     k = esq;
 
+    // Mescla os arrays de volta para o array original
     while (i < n1 && j < n2) {
         if (esqArr[i] <= dirtArr[j]) {
             arr[k] = esqArr[i];
@@ -44,18 +49,21 @@ void merge(int arr[], int esq, int meio, int dirt) {
         k++;
     }
 
+    // Copia os elementos do array esquerdo
     while (i < n1) {
         arr[k] = esqArr[i];
         i++;
         k++;
     }
 
+    // Copia os elementos do array direito
     while (j < n2) {
         arr[k] = dirtArr[j];
         j++;
         k++;
     }
 
+    // Libera a memória
     free(esqArr);
     free(dirtArr);
 }
@@ -91,12 +99,16 @@ void* mergeSortThread(void* arguments) {
 void mergeArrays(int arr[], int inicio, int meio, int fim) {
     
     int i, j, k;
+
+    // Calcula o tamanho das partes do array
     int n1 = meio - inicio + 1;
     int n2 = fim - meio;
 
+    // Aloca memória para arrays
     int* temp1 = (int*)malloc(n1 * sizeof(int));
     int* temp2 = (int*)malloc(n2 * sizeof(int));
 
+    // Copia as partes do array original para os arrays 
     for (i = 0; i < n1; i++)
         temp1[i] = arr[inicio + i];
     for (j = 0; j < n2; j++)
@@ -106,6 +118,7 @@ void mergeArrays(int arr[], int inicio, int meio, int fim) {
     j = 0;
     k = inicio;
 
+    // Mescla os arrays de volta para o array original
     while (i < n1 && j < n2) {
         if (temp1[i] <= temp2[j]) {
             arr[k] = temp1[i];
@@ -117,18 +130,21 @@ void mergeArrays(int arr[], int inicio, int meio, int fim) {
         k++;
     }
 
+    // Copia os elementos do array esquerdo
     while (i < n1) {
         arr[k] = temp1[i];
         i++;
         k++;
     }
 
+    // Copia os elementos do array direito
     while (j < n2) {
         arr[k] = temp2[j];
         j++;
         k++;
     }
 
+    // Libera a memória
     free(temp1);
     free(temp2);
 }
@@ -184,7 +200,7 @@ void printArrayExtr(int arr[], int size) {
 }
 
 bool verificaOrdem(int array[], int n) {
-
+    // Verifica se o array está ordenado
     for (int i = 0; i < n - 1; i++) {
         if (array[i] > array[i + 1]) {
             return false;
